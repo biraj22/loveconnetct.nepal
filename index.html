@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LoveConnect Nepal ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #fff0f5;
+    color: #333;
+}
+
+header {
+    background: #ff3478;
+    color: white;
+    padding: 25px 10px;
+    text-align: center;
+}
+
+.container {
+    max-width: 450px;
+    margin: 25px auto;
+    padding: 15px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 16px;
+    box-shadow: 0 3px 12px #00000015;
+}
+
+input, textarea, button {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+}
+
+button {
+    background: #ff3478;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.profile {
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>❤️ LoveConnect Nepal</h1>
+    <p>Meet People. Build Connections.</p>
+</header>
+
+<main class="container">
+
+    <section class="card">
+        <h2>Create Your Profile 👤</h2>
+
+        <form id="profileForm">
+            <input id="name" placeholder="Your Name" required>
+
+            <input id="age" type="number"
+                placeholder="Your Age (18+)"
+                min="18" max="120" required>
+
+            <input id="city" placeholder="Your City" required>
+
+            <textarea id="bio"
+                placeholder="Write about yourself"
+                required></textarea>
+
+            <button type="submit">Create Profile ❤️</button>
+        </form>
+
+        <p id="message"></p>
+    </section>
+
+    <h2>💕 Discover People</h2>
+
+    <div id="profiles">
+        <div class="card profile">
+            <h2>💖 Welcome!</h2>
+            <p>Join LoveConnect Nepal to get started.</p>
+        </div>
+    </div>
+
+</main>
+
+<footer>
+    LoveConnect Nepal ❤️<br>
+    Respect • Privacy • Genuine Connections
+</footer>
+
+<script>
+const form = document.getElementById("profileForm");
+const profiles = document.getElementById("profiles");
+
+form.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const age = Number(document.getElementById("age").value);
+    const city = document.getElementById("city").value.trim();
+    const bio = document.getElementById("bio").value.trim();
+
+    if (age < 18 || age > 120) {
+        document.getElementById("message").textContent =
+            "This dating demo is for adults aged 18 and above.";
+        return;
+    }
+
+    const card = document.createElement("div");
+    card.className = "card profile";
+
+    const heading = document.createElement("h3");
+    heading.textContent = name + ", " + age;
+
+    const location = document.createElement("p");
+    location.textContent = city;
+
+    const description = document.createElement("p");
+    description.textContent = bio;
+
+    const interest = document.createElement("button");
+    interest.textContent = "Send Interest 💌";
+
+    interest.onclick = function() {
+        alert("Demo only: online interest requests are not connected yet.");
+    };
+
+    card.append(heading, location, description, interest);
+    profiles.prepend(card);
+
+    document.getElementById("message").textContent =
+        "Profile added on this device only! ❤️";
+
+    form.reset();
+});
+</script>
+
+</body>
+</html>
